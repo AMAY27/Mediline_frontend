@@ -40,10 +40,10 @@ const Login = () => {
     <div>
         <h1>Login</h1>
         <input 
-            type="text"
+            type="email"
             name="email"
             onChange={handleInputChange}
-            placeholder="Enter username"
+            placeholder="Enter email"
         />
         <input
             type="password"

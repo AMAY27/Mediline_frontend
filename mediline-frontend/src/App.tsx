@@ -7,7 +7,7 @@ function App(){
   return (
     <Router basename='/mediline'>
       <Routes>
-        <Route element={<DoctorRoutes/>}/>
+        <Route path='/doctor/*' element={<DoctorRoutes/>}/>
       </Routes>
     </Router>
   )
