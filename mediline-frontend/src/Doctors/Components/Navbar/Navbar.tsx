@@ -12,31 +12,38 @@ const Navbar = () => {
         }
         return(
             <div className='mobile-nav'>
-                <h2>Mediline Clinic</h2>
-                <div className='nav-item'>Home</div>
-                <div className='nav-item'>Dashboard</div>
-                <div className='nav-item'>Appointments</div>
-                <div className='nav-item'>Patient data</div>
+                <div className="mobnav-head">
+                    <h2>Mediline Clinic</h2>
+                    <h2 onClick={handleMenuOpen}>X</h2>
+                </div>
+                <div className='mobnav-items'>
+                    <div className='mobnav-item'>Home</div>
+                    <div className='mobnav-item'>Dashboard</div>
+                    <div className='mobnav-item'>Appointments</div>
+                    <div className='mobnav-item'>Patient data</div>
+                </div>
             </div>
         )
     }
   return (
     <>
         <MobileNav/>
-        <nav className='nav-bar'>
+        {!isMobileMenuClicked && <nav className='nav-bar'>
             <h2>Mediline Clinic</h2>
-            <div className='nav-items'>
-                <div className='md:hidden cursor-pointer mr-7' onClick={handleMenuOpen}>
-                    <svg className='h-6 w-6 text-black' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+            <>
+                <div className='menu-svg' onClick={handleMenuOpen}>
+                    <svg className='icon' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h16m-7 6h7' />
                     </svg>
                 </div>
-                <div className='nav-item'>Home</div>
-                <div className='nav-item'>Dashboard</div>
-                <div className='nav-item'>Appointments</div>
-                <div className='nav-item'>Patient data</div>
-            </div>
-        </nav>
+                <div className='nav-items'>
+                    <div className='nav-item'>Home</div>
+                    <div className='nav-item'>Dashboard</div>
+                    <div className='nav-item'>Appointments</div>
+                    <div className='nav-item'>Patient data</div>
+                </div>
+            </>
+        </nav>}
     </>
   )
 }
