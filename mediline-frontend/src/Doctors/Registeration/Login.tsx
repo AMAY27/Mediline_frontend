@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { DocLoginProps } from './registeration-types'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const Login = () => {
     const BACKEND_URL = import.meta.env.VITE_NODE_BACKEND_URL;
@@ -7,7 +8,7 @@ const Login = () => {
         email : "",
         password : ""
     })
-
+    const navigate = useNavigate()
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         //e.preventDefault();
         setDocLoginCredentials(prevCredentials => ({
@@ -29,8 +30,9 @@ const Login = () => {
             if(res.status === 200){
                 
                 console.log(res);
-                localStorage.setItem("userId", res.data.userId)
-                localStorage.setItem("access", res.data.token)
+                localStorage.setItem("userId", res.data.userId);
+                localStorage.setItem("access", res.data.token);
+                navigate('/doctor/dashboard');
             }
         } catch (error) {
             console.log(error)

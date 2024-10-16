@@ -1,0 +1,20 @@
+.nav-bar{
+    background-color: #bbf7d0;
+    padding: 0.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    height: fit-content;
+    border-radius: 25px;
+    margin-top: 20px;
+    margin-inline: 20px;
+
+}
+
+.nav-items{
+    display: flex;
+}
+ .nav-item{
+    padding-inline: 10px;
+ }
