@@ -5,6 +5,9 @@ const Dashboard = () => {
   return (
     <>
         <Navbar/>
+        <div className='font-bold text-green-300 text-xl'>
+            Doctor clinic name
+        </div>
     </>
   )
 }

@@ -1,6 +1,6 @@
 .nav-bar{
     background-color: #bbf7d0;
-    padding: 0.25rem 1.5rem;
+    padding-inline: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,8 +13,66 @@
 }
 
 .nav-items{
-    display: flex;
+    display: none;
 }
- .nav-item{
-    padding-inline: 10px;
- }
+
+.nav-bar h2{
+    font-weight: bolder;
+    color: #16A34A;
+    font-size: x-large;
+}
+
+.menu-svg{
+    cursor: pointer;
+    margin-right: 1.75rem;
+}
+
+@media (min-width: 768px) {
+    .menu-svg {
+      display: none; /* Equivalent to md:hidden */
+    }
+    .nav-items{
+        display: flex;
+        gap: 1.75rem;
+    }
+    .nav-item{
+        font-weight: bold;
+        padding: 0.5rem 0.5rem;
+        cursor: pointer;
+    }
+    .nav-item:hover{
+        color: #16A34A;
+    }
+  }
+
+.icon {
+    height: 1.5rem; /* Equivalent to 'h-6' in Tailwind (24px) */
+    width: 1.5rem; /* Equivalent to 'w-6' in Tailwind (24px) */
+    color: black; /* Equivalent to 'text-black' in Tailwind */
+}
+
+.mobile-nav{
+    background-color: #bbf7d0;
+    height: 100vh;
+}
+
+.mobnav-items{
+    margin-inline: 2.5rem;
+    font-size: x-large;
+    gap: 1.5rem;
+    /* background-color: #16A34A; */
+}
+
+.mobnav-items > *+*{
+    margin-top: 1rem;
+}
+
+.mobnav-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 1rem;
+}
+.mobnav-head h2{
+    cursor: pointer;
+}
