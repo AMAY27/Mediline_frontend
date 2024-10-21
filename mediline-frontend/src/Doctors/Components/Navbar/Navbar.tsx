@@ -36,12 +36,12 @@ const Navbar = () => {
                         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4 6h16M4 12h16m-7 6h7' />
                     </svg>
                 </div>
-                <div className='nav-items'>
+                {/* <div className='nav-items'>
                     <div className='nav-item'>Home</div>
                     <div className='nav-item'>Dashboard</div>
                     <div className='nav-item'>Appointments</div>
                     <div className='nav-item'>Patient data</div>
-                </div>
+                </div> */}
             </>
         </nav>}
     </>
