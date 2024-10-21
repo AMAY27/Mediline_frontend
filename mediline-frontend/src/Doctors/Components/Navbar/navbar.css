@@ -1,14 +1,17 @@
 .nav-bar{
-    background-color: #bbf7d0;
+    /* background-color: #bbf7d0; */
     padding-inline: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: black;
     height: fit-content;
-    border-radius: 25px;
-    margin-top: 20px;
-    margin-inline: 20px;
+    /* border-radius: 25px; */
+    /* margin-top: 20px; */
+    /* margin-inline: 20px; */
+    padding-block: 10px;
+    border-bottom: 2px solid #16A34A;
+    /* position :absolute; */
 
 }
 
@@ -19,7 +22,7 @@
 .nav-bar h2{
     font-weight: bolder;
     color: #16A34A;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 .menu-svg{
