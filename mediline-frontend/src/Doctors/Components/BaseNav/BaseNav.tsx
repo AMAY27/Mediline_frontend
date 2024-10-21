@@ -4,13 +4,18 @@ import { MdManageAccounts } from "react-icons/md";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { SlScreenDesktop } from "react-icons/sl";
 import { CiChat1 } from "react-icons/ci";
+import { useDocContext } from '../../Global-contexts/docContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const BaseNav = () => {
-    const [clickedNavItem, setClickedNavItem] = useState<String>("admin");
-    const handleNavItemsClick = (item:String) => {
+    //const [clickedNavItem, setClickedNavItem] = useState<String>("admin");
+    const navigate = useNavigate()
+    const { clickedNavItem, setClickedNavItem } = useDocContext();
+    const handleNavItemsClick = (item:string) => {
         setClickedNavItem(item);
+        navigate(`/doctor/${item}`);
     }
   return (
     <div className='flex flex-col items-center bg-green-800 pt-5 w-[7%] h-screen'>
