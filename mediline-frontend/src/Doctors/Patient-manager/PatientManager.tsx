@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Dochoc from '../Hoc/Dochoc';
-import { useDocContext } from '../Global-contexts/docContext';
+import { useDocContext } from '../Global-contexts/DocContext';
 
 const PatientManager = () => {
     const { clickedNavItem, setClickedNavItem } = useDocContext();
