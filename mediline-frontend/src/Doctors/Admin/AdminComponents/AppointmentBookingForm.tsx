@@ -2,42 +2,56 @@
  the doctor clinic. */  
 
 import React from 'react'
+import './appointmentBookingForm.css'
 
 const AppointmentBookingForm = () => {
   return (
     <div>
-        <form action="">
+        <form action="" className='space-y-4'>
             <div>
-                <label>
-                    First Name
+                <label className='appointment-form-input'>
+                    First Name:
                 </label>
                 <input
+                    className='p-2 shadow rounded-md w-full mt-3'
                     placeholder='Enter First Name'
                 />
             </div>
             <div>
-                <label>
-                    Last Name
+                <label className='appointment-form-input'>
+                    Last Name:
                 </label>
                 <input
+                    className='p-2 shadow rounded-md w-full mt-3'
                     placeholder='Enter Last Name'
                 />
             </div>
-            <div>
-                <label>
-                    Age
-                </label>
-                <input
-                    placeholder='Enter Age'
-                />
-            </div>
-            <div>
-                <label>
-                    Height
-                </label>
-                <input
-                    placeholder='Enter Height'
-                />
+            <div className="grid grid-cols-2 gap-4">
+                {/* <div className="col-span-1 space-y-4">
+                    
+                </div> */}
+                <div className="col-span-1 space-x-4">
+                    <div>
+                        <label className='appointment-form-input'>
+                            Age:
+                        </label>
+                        <input
+                            className='p-2 shadow rounded-md w-full mt-3'
+                            placeholder='Enter Last Name'
+                        />
+                    </div>
+                </div>
+                <div className="col-span-1">
+                    <div>
+                        <label className='appointment-form-input'>
+                            Weight:
+                        </label>
+                        <input
+                            className='p-2 shadow rounded-md w-full mt-3'
+                            placeholder='Enter Last Name'
+                        />
+                    </div>
+                </div>
             </div>
         </form>
     </div>

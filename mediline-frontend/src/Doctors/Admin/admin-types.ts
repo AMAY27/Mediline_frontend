@@ -4,7 +4,6 @@ export interface appointmentDetails{
     lastName: string,
     age: number,
     weight: number,
-    height: number,
     date: Date,
     time: string,
 }
