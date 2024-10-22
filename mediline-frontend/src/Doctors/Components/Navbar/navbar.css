@@ -2,7 +2,7 @@
     /* background-color: #bbf7d0; */
     padding-inline: 1.5rem;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     color: black;
     height: fit-content;
@@ -78,4 +78,18 @@
 }
 .mobnav-head h2{
     cursor: pointer;
+}
+
+.nav-patient-input{
+    border-radius: 0.5rem;
+    border: 2px solid #16A34A;
+    padding-inline: 1.5rem;
+    padding-block: 0.25rem;
+    width: 100%;
+    
+}
+
+.nav-patient-search{
+    width: 40%;
+    margin-inline: 2rem;
 }

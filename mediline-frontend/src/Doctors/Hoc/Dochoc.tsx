@@ -14,4 +14,4 @@ const Dochoc = (WrappedComponets: React.FC<any>) => {
   }
 }
 
-export default Dochoc
+export default Dochoc;
