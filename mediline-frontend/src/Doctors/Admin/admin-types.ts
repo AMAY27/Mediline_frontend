@@ -1,9 +1,9 @@
 export interface appointmentDetails{
-    appointmentId: string,
+    appointmentId: number,
     firstName: string,
     lastName: string,
     age: number,
     weight: number,
-    date: Date,
+    date: string,
     time: string,
 }
