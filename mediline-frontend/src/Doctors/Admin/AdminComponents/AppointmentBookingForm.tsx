@@ -6,12 +6,65 @@
 
 // Implement a step form with contact validation from backend.
 
-import React from 'react'
+import React, { useState } from 'react'
 import './appointmentBookingForm.css'
 
 const AppointmentBookingForm = () => {
+    const [contactVerified, setContactVerified] = useState<Boolean>(false);
+    const [isLoading, setIsLoading] = useState<Boolean>(false);
+    const [contactNumber, setContactNumber] = useState<number>();
+    const mockContactVerification = (contact: number) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                // For demonstration, assume contact "1234567890" exists in the database
+                if (contact === 1234567890) {
+                    resolve(true);  // contact found
+                } else {
+                    resolve(false); // contact not found
+                }
+            }, 1000); // 1-second delay to simulate network latency
+        });
+    };
+    const handleContactSubmit = async (e:React.FormEvent) => {
+        e.preventDefault();
+        setIsLoading(true);
+        try {
+            const contactExists = await mockContactVerification(contactNumber ?? 0);
+            
+            if (contactExists) {
+                setContactVerified(true);  // Show appointment form if contact exists
+            } else {
+                alert("User not found, please register first.");
+            }
+        } catch (error) {
+            alert("Error connecting to mock verification.");
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
   return (
     <div>
+        {!contactVerified ? <form onSubmit={handleContactSubmit}>
+            <div>
+                <label className='appointment-form-input'>
+                    Contact Number:
+                </label>
+                <input
+                    className='p-2 shadow rounded-md w-full my-3'
+                    placeholder='Enter Contact'
+                    required= {true}
+                    value={contactNumber ?? '' }
+                    onChange={(e) => setContactNumber(e.target.value ? Number(e.target.value) : undefined)}
+                    type='number'
+                />
+                <button 
+                    type='submit' 
+                    className='p-2 flex justify-center font-bold rounded-md w-full border-2 border-green-600 hover:bg-green-600 hover:text-white text-green-600'>
+                        {isLoading ? "Verifying..." : "Submit"}
+                </button>
+            </div>
+        </form> :
         <form action="" className='space-y-4'>
             <div>
                 <label className='appointment-form-input'>
@@ -93,7 +146,7 @@ const AppointmentBookingForm = () => {
             >
                 Complete Booking
             </button>
-        </form>
+        </form>}
     </div>
   )
 }
