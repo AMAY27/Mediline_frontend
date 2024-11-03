@@ -12,15 +12,15 @@ import './appointmentBookingForm.css'
 const AppointmentBookingForm = () => {
     const [contactVerified, setContactVerified] = useState<Boolean>(false);
     const [isLoading, setIsLoading] = useState<Boolean>(false);
+    const [isContactVerificationComplete, setIsContactVerificationComplete] = useState<Boolean>(false);
     const [contactNumber, setContactNumber] = useState<number>();
     const mockContactVerification = (contact: number) => {
         return new Promise((resolve) => {
             setTimeout(() => {
-                // For demonstration, assume contact "1234567890" exists in the database
                 if (contact === 1234567890) {
-                    resolve(true);  // contact found
+                    resolve(true);  
                 } else {
-                    resolve(false); // contact not found
+                    resolve(false); 
                 }
             }, 1000); // 1-second delay to simulate network latency
         });
@@ -32,8 +32,11 @@ const AppointmentBookingForm = () => {
             const contactExists = await mockContactVerification(contactNumber ?? 0);
             
             if (contactExists) {
-                setContactVerified(true);  // Show appointment form if contact exists
+                setIsContactVerificationComplete(true);
+                setContactVerified(true); 
             } else {
+                setIsContactVerificationComplete(true);
+                setContactVerified(false);
                 alert("User not found, please register first.");
             }
         } catch (error) {
@@ -45,7 +48,8 @@ const AppointmentBookingForm = () => {
 
   return (
     <div>
-        {!contactVerified ? <form onSubmit={handleContactSubmit}>
+        {!isContactVerificationComplete ? 
+        <form onSubmit={handleContactSubmit}>
             <div>
                 <label className='appointment-form-input'>
                     Contact Number:
@@ -65,88 +69,204 @@ const AppointmentBookingForm = () => {
                 </button>
             </div>
         </form> :
-        <form action="" className='space-y-4'>
-            <div>
-                <label className='appointment-form-input'>
-                    First Name:
-                </label>
-                <input
-                    className='p-2 shadow rounded-md w-full mt-3'
-                    placeholder='Enter First Name'
-                    required= {true}
-                />
-            </div>
-            <div>
-                <label className='appointment-form-input'>
-                    Last Name:
-                </label>
-                <input
-                    className='p-2 shadow rounded-md w-full mt-3'
-                    placeholder='Enter Last Name'
-                    required= {true}
-                />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-                {/* <div className="col-span-1 space-y-4">
-                    
-                </div> */}
-                <div className="col-span-1 space-y-4">
-                    <div>
-                        <label className='appointment-form-input'>
-                            Age:
-                        </label>
-                        <input
-                            className='p-2 shadow rounded-md w-full mt-3'
-                            placeholder='Enter Age'
-                            required= {true}
-                        />
-                    </div>
-                    <div>
-                        <label className='appointment-form-input'>
-                            Blood Pressure:
-                        </label>
-                        <div className="flex items-center">
+        <>
+            {!contactVerified ? 
+                <>
+                    {/* User registeration and booking */}
+                    <form action="">
+                        <h2 className='text-xl'>User Registeration</h2>
+                        <div>
+                            <label className='appointment-form-input'>
+                                First Name:
+                            </label>
                             <input
-                                className='p-1 shadow rounded-md w-full mt-3'
-                                // placeholder='Enter Last Name'
+                                className='p-2 shadow rounded-md w-full mt-3'
+                                placeholder='Enter First Name'
+                                required= {true}
                             />
-                            <h2 className='text-2xl'> / </h2>
-                            <input
-                                className='p-1 shadow rounded-md w-full mt-3'
-                                // placeholder='Enter Last Name'
-                            />
-                            <h2 className='mx-2'>mmHg</h2>
                         </div>
-                    </div>
-                </div>
-                <div className="col-span-1 space-y-4">
-                    <div>
-                        <label className='appointment-form-input'>
-                            Weight:
-                        </label>
-                        <input
-                            className='p-2 shadow rounded-md w-full mt-3'
-                            placeholder='Kg'
-                        />
-                    </div>
-                    <div>
-                        <label className='appointment-form-input'>
-                            Contact:
-                        </label>
-                        <input
-                            className='p-2 shadow rounded-md w-full mt-3'
-                            placeholder='Enter Contact'
-                        />
-                    </div>
-                </div>
-            </div>
-            <button 
-                className='p-2 flex justify-center font-bold rounded-md w-full border-2 border-green-600 hover:bg-green-600 hover:text-white text-green-600'
-                type='submit'
-            >
-                Complete Booking
-            </button>
-        </form>}
+                        <div>
+                            <label className='appointment-form-input'>
+                                Last Name:
+                            </label>
+                            <input
+                                className='p-2 shadow rounded-md w-full mt-3'
+                                placeholder='Enter Last Name'
+                                required= {true}
+                            />
+                        </div>
+                    </form>
+                    <form action="" className='space-y-4'>
+                        <div>
+                            <label className='appointment-form-input'>
+                                First Name:
+                            </label>
+                            <input
+                                className='p-2 shadow rounded-md w-full mt-3'
+                                placeholder='Enter First Name'
+                                required= {true}
+                            />
+                        </div>
+                        <div>
+                            <label className='appointment-form-input'>
+                                Last Name:
+                            </label>
+                            <input
+                                className='p-2 shadow rounded-md w-full mt-3'
+                                placeholder='Enter Last Name'
+                                required= {true}
+                            />
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* <div className="col-span-1 space-y-4">
+
+                            </div> */}
+                            <div className="col-span-1 space-y-4">
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Age:
+                                    </label>
+                                    <input
+                                        className='p-2 shadow rounded-md w-full mt-3'
+                                        placeholder='Enter Age'
+                                        required= {true}
+                                    />
+                                </div>
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Blood Pressure:
+                                    </label>
+                                    <div className="flex items-center">
+                                        <input
+                                            className='p-1 shadow rounded-md w-full mt-3'
+                                            // placeholder='Enter Last Name'
+                                        />
+                                        <h2 className='text-2xl'> / </h2>
+                                        <input
+                                            className='p-1 shadow rounded-md w-full mt-3'
+                                            // placeholder='Enter Last Name'
+                                        />
+                                        <h2 className='mx-2'>mmHg</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-span-1 space-y-4">
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Weight:
+                                    </label>
+                                    <input
+                                        className='p-2 shadow rounded-md w-full mt-3'
+                                        placeholder='Kg'
+                                    />
+                                </div>
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Contact:
+                                    </label>
+                                    <input
+                                        className='p-2 shadow rounded-md w-full mt-3'
+                                        placeholder='Enter Contact'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <button 
+                            className='p-2 flex justify-center font-bold rounded-md w-full border-2 border-green-600 hover:bg-green-600 hover:text-white text-green-600'
+                            type='submit'
+                        >
+                            Complete Booking
+                        </button>
+                    </form>
+                </> : 
+                <>
+                    {/* <h2>Appointment</h2> */}
+                    <form action="" className='space-y-4'>
+                        <div>
+                            <label className='appointment-form-input'>
+                                First Name:
+                            </label>
+                            <input
+                                className='p-2 shadow rounded-md w-full mt-3'
+                                placeholder='Enter First Name'
+                                required= {true}
+                            />
+                        </div>
+                        <div>
+                            <label className='appointment-form-input'>
+                                Last Name:
+                            </label>
+                            <input
+                                className='p-2 shadow rounded-md w-full mt-3'
+                                placeholder='Enter Last Name'
+                                required= {true}
+                            />
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* <div className="col-span-1 space-y-4">
+
+                            </div> */}
+                            <div className="col-span-1 space-y-4">
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Age:
+                                    </label>
+                                    <input
+                                        className='p-2 shadow rounded-md w-full mt-3'
+                                        placeholder='Enter Age'
+                                        required= {true}
+                                    />
+                                </div>
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Blood Pressure:
+                                    </label>
+                                    <div className="flex items-center">
+                                        <input
+                                            className='p-1 shadow rounded-md w-full mt-3'
+                                            // placeholder='Enter Last Name'
+                                        />
+                                        <h2 className='text-2xl'> / </h2>
+                                        <input
+                                            className='p-1 shadow rounded-md w-full mt-3'
+                                            // placeholder='Enter Last Name'
+                                        />
+                                        <h2 className='mx-2'>mmHg</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-span-1 space-y-4">
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Weight:
+                                    </label>
+                                    <input
+                                        className='p-2 shadow rounded-md w-full mt-3'
+                                        placeholder='Kg'
+                                    />
+                                </div>
+                                <div>
+                                    <label className='appointment-form-input'>
+                                        Contact:
+                                    </label>
+                                    <input
+                                        className='p-2 shadow rounded-md w-full mt-3'
+                                        placeholder='Enter Contact'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <button 
+                            className='p-2 flex justify-center font-bold rounded-md w-full border-2 border-green-600 hover:bg-green-600 hover:text-white text-green-600'
+                            type='submit'
+                        >
+                            Complete Booking
+                        </button>
+                    </form>
+                </>
+            }
+        </>
+        }
     </div>
   )
 }
