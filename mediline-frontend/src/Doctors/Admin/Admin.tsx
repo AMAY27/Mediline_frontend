@@ -5,6 +5,7 @@ import Dochoc from '../Hoc/Dochoc';
 import AppointmentBookingForm from './AdminComponents/AppointmentBooking/AppointmentBookingForm';
 import {appointments} from '../../../testDataForDoctors/appointmentList';
 import AppointmentCard from './AdminComponents/AppointmentCard';
+import AppointmentBookingMain from './AdminComponents/AppointmentBooking/AppointmentBookingMain';
 
 const Admin = () => {
     const {clickedNavItem} = useDocContext();
@@ -26,7 +27,7 @@ const Admin = () => {
             </div>
             <div className="col-span-2 p-8">
                 <h2 className='text-2xl pb-2 flex items-center justify-center text-green-600'>Book New Appointment</h2>
-                <AppointmentBookingForm/>
+                <AppointmentBookingMain/>
             </div>
         </div>
       </>
