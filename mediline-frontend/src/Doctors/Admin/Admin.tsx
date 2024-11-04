@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../Components/Navbar/Navbar';
 import { useDocContext } from '../Global-contexts/DocContext';
 import Dochoc from '../Hoc/Dochoc';
-import AppointmentBookingForm from './AdminComponents/AppointmentBookingForm';
+import AppointmentBookingForm from './AdminComponents/AppointmentBooking/AppointmentBookingForm';
 import {appointments} from '../../../testDataForDoctors/appointmentList';
 import AppointmentCard from './AdminComponents/AppointmentCard';
 
