@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BookingForm from './BookingForm';
 import ContactForm from './ContactForm';
-import FormInput from './FormInput';
+// import FormInput from './FormInput';
 import RegistrationForm from './RegistrationForm';
 
 
