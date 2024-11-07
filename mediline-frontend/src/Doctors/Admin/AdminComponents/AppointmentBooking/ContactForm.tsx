@@ -10,6 +10,9 @@ const ContactForm: React.FC<ContactFormProps> = ({ contactNumber, setContactNumb
 
     return (
         <form onSubmit={onSubmit}>
+            <div className="flex">
+                <h2 className='text-2xl pb-2 flex items-center justify-center text-green-600'>Book New Appointment</h2>
+            </div>
             <label className='appointment-form-input'>Contact Number:</label>
             <input
                 className='p-2 shadow rounded-md w-full my-3'

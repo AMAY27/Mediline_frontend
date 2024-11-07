@@ -26,7 +26,6 @@ const Admin = () => {
                 </div>
             </div>
             <div className="col-span-2 p-8">
-                <h2 className='text-2xl pb-2 flex items-center justify-center text-green-600'>Book New Appointment</h2>
                 <AppointmentBookingMain/>
             </div>
         </div>
