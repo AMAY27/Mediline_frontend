@@ -1,10 +1,15 @@
 // RegistrationForm.tsx
 import React from 'react';
 import FormInput from './FormInput';
+import { RegistrationFormProps } from '../../admin-types';
 
-const RegistrationForm: React.FC = () => {
+const RegistrationForm: React.FC<RegistrationFormProps> = ({handleBack}) => {
     return (
         <form className='space-y-4'>
+            <div className="flex justify-between text-2xl pb-2 text-green-600 items-center px-4">
+                <h2 className='cursor-pointer' onClick={handleBack}>&lt;</h2>
+                <h2>Book New Appointment</h2>
+            </div>
             <div className='space-y-2 bg-green-100 p-2'>
                 <h2 className='text-lg'>User Registration</h2>
                 <div className="grid grid-cols-2 gap-2">

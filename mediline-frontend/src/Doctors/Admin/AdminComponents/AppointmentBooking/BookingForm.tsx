@@ -1,10 +1,15 @@
 // BookingForm.tsx
 import React from 'react';
 import FormInput from './FormInput';
+import { BookinFormProps } from '../../admin-types';
 
-const BookingForm: React.FC = () => {
+const BookingForm: React.FC<BookinFormProps> = ({handleBack}) => {
     return (
         <form className='space-y-4 bg-green-100 p-2'>
+            <div className="flex justify-between text-2xl pb-2 text-green-600 items-center px-4">
+                <h2 className='cursor-pointer' onClick={handleBack}>&lt;</h2>
+                <h2>Book New Appointment</h2>
+            </div>
             <h2 className='text-xl'>Appointment Booking</h2>
             <FormInput label="First Name" placeholder="Enter First Name" required />
             <FormInput label="Last Name" placeholder="Enter Last Name" required />

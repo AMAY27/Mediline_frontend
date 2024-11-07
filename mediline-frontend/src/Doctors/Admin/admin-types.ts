@@ -21,3 +21,11 @@ export interface ContactFormProps {
     handleContactSubmit: (contact: number) => Promise<void>;
     isLoading: boolean;
 }
+
+export interface BookinFormProps {
+    handleBack: () => void;
+}
+
+export interface RegistrationFormProps {
+    handleBack: () => void;
+}

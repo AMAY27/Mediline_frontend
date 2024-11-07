@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BookingForm from './BookingForm';
 import ContactForm from './ContactForm';
-import FormInput from './FormInput';
+// import FormInput from './FormInput';
 import RegistrationForm from './RegistrationForm';
 
 
@@ -37,6 +37,10 @@ const AppointmentBookingMain = () => {
             setIsLoading(false);
         }
     };
+    const handleBack = async() =>{
+        setIsContactVerificationComplete(false);
+        setContactVerified(false);
+    }
     return (
         <div>
             {!isContactVerificationComplete ? (
@@ -47,9 +51,9 @@ const AppointmentBookingMain = () => {
                     isLoading={isLoading} 
                 />
             ) : contactVerified ? (
-                <BookingForm />
+                <BookingForm handleBack={handleBack}/>
             ) : (
-                <RegistrationForm />
+                <RegistrationForm handleBack={handleBack}/>
             )}
         </div>
     );
