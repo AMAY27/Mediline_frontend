@@ -4,7 +4,7 @@ import FormInput from './FormInput';
 
 const BookingForm: React.FC = () => {
     return (
-        <form className='space-y-4'>
+        <form className='space-y-4 bg-green-100 p-2'>
             <h2 className='text-xl'>Appointment Booking</h2>
             <FormInput label="First Name" placeholder="Enter First Name" required />
             <FormInput label="Last Name" placeholder="Enter Last Name" required />

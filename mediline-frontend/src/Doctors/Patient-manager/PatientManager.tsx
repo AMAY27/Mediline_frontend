@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Dochoc from '../Hoc/Dochoc';
 import { useDocContext } from '../Global-contexts/DocContext';
+import Navbar from '../Components/Navbar/Navbar';
 
 const PatientManager = () => {
     const { clickedNavItem, setClickedNavItem } = useDocContext();
@@ -11,7 +12,10 @@ const PatientManager = () => {
         return null;
     }
   return (
-    <div>PatientManager</div>
+    <div>
+      <Navbar/>
+      <h2 className='text-green-600 text-3xl font-bold px-4 py-4'>Patient Manager</h2>
+    </div>
   )
 }
 
