@@ -29,3 +29,32 @@ export interface BookinFormProps {
 export interface RegistrationFormProps {
     handleBack: () => void;
 }
+
+export interface AppointmentDetails {
+    appointmentId: number,
+    doc_id : number,
+    office_id: number,
+    user_id : number,
+    patient_details : patient_details,
+    firstName: string,
+    lastName: string,
+    age: number,
+    weight: number,
+    appointment_date: Date,
+    time_slot: string,
+    is_completed: boolean,
+    prescription:[],
+    reports:[]
+}
+export interface patient_details {
+    name: string,
+    age : number,
+    weight:number,
+    blood_pressure: blood_pressure
+    contact : number
+}
+
+export interface blood_pressure{
+    systolic: number,
+    diastolic: number
+}
