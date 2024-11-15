@@ -21,7 +21,7 @@ const Admin = () => {
                 <h2 className='text-2xl mb-4'>Today's Appointments</h2>
                 <div className="grid grid-cols-2 gap-4">
                   {appointments.map((appointment) => (
-                    <AppointmentCard appointmentId={appointment.appointmentId} firstName={appointment.firstName} lastName={appointment.lastName} age={appointment.age} weight={appointment.weight} date={appointment.date} time={appointment.time}/>
+                    <AppointmentCard appointmentId={appointment.appointmentId} patient_details={appointment.patient_details} doc_id={0} office_id={0} user_id={0} appointment_date={''} time_slot={''} is_completed={false} prescription={[]} reports={[]}/>
                   ))}
                 </div>
             </div>
