@@ -54,3 +54,17 @@ export interface blood_pressure{
     systolic: number,
     diastolic: number
 }
+
+export interface AppointmentCardProps {
+    appointmentId: number;
+    patient_details: {
+      name: string;
+      age: number;
+      weight: number;
+      blood_pressure: {
+        systolic: number;
+        diastolic: number;
+      };
+      contact: number;
+    };
+  }
