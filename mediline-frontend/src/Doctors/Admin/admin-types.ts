@@ -67,4 +67,4 @@ export interface AppointmentCardProps {
       };
       contact: number;
     };
-  }
+}
