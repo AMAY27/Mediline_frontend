@@ -3,6 +3,7 @@ import BookingForm from './BookingForm';
 import ContactForm from './ContactForm';
 // import FormInput from './FormInput';
 import RegistrationForm from './RegistrationForm';
+import {users} from '../../../../../testDataForDoctors/userList'
 
 
 const AppointmentBookingMain = () => {
@@ -13,9 +14,12 @@ const AppointmentBookingMain = () => {
 
     const mockContactVerification = (contact: number) => {
         return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(contact === 1234567890);
-            }, 1000);
+            users.map((user) => {
+                setTimeout(() => {
+                    const found = users.some((user) => contact === user.contact)
+                    resolve(found)
+                },1000)
+            })
         });
     };
     const handleContactSubmit = async (contact:number) => {
