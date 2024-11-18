@@ -5,7 +5,7 @@ import { BookinFormProps } from '../../admin-types';
 
 const BookingForm: React.FC<BookinFormProps> = ({handleBack}) => {
     return (
-        <form className='space-y-4 bg-green-100 p-2'>
+        <form className='space-y-4 p-2'>
             <div className="flex justify-between text-2xl pb-2 text-green-600 items-center px-4">
                 <h2 className='cursor-pointer' onClick={handleBack}>&lt;</h2>
                 <h2>Book New Appointment</h2>
