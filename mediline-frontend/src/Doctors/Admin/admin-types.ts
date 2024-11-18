@@ -67,4 +67,5 @@ export interface AppointmentCardProps {
       };
       contact: number;
     };
+    onClick: () => void;
 }
