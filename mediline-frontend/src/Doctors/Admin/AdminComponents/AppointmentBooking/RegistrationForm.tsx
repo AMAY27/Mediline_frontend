@@ -10,14 +10,14 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({handleBack}) => {
                 <h2 className='cursor-pointer' onClick={handleBack}>&lt;</h2>
                 <h2>Book New Appointment</h2>
             </div>
-            <div className='space-y-2 bg-green-100 p-2'>
+            <div className='space-y-2 p-2'>
                 <h2 className='text-lg'>User Registration</h2>
                 <div className="grid grid-cols-2 gap-2">
                     <FormInput label="First Name" placeholder="Enter First Name" required />
                     <FormInput label="Last Name" placeholder="Enter Last Name" required />
                 </div>
             </div>
-            <div className='space-y-2 bg-green-100 p-2'>
+            <div className='space-y-2 p-2'>
                 <h2 className='text-lg'>Patient Details</h2>
                 <div className="grid grid-cols-2 gap-2">
                     <FormInput label="Patient First Name" placeholder="Enter Patient's First Name" required />
