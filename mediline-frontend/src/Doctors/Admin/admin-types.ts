@@ -31,10 +31,10 @@ export interface RegistrationFormProps {
 }
 
 export interface AppointmentDetails {
-    appointmentId: number,
-    doc_id : number,
-    office_id: number,
-    user_id : number,
+    appointmentId: string,
+    doc_id : string,
+    office_id: string,
+    user_id : string,
     patient_details : patient_details,
     appointment_date: string,
     time_slot: string,
@@ -56,7 +56,7 @@ export interface blood_pressure{
 }
 
 export interface AppointmentCardProps {
-    appointmentId: number;
+    appointmentId: string;
     patient_details: {
       name: string;
       age: number;
