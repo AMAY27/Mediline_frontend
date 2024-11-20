@@ -6,16 +6,20 @@ import {appointments} from '../../../testDataForDoctors/appointmentList';
 import AppointmentCard from './AdminComponents/AppointmentCard';
 import AppointmentBookingMain from './AdminComponents/AppointmentBooking/AppointmentBookingMain';
 import { useNavigate } from 'react-router-dom';
+import { useAdminContext } from './Admin-context/AdminContext';
+import { AppointmentDetails } from './admin-types';
 
 const Admin = () => {
     const {clickedNavItem} = useDocContext();
+    const {setAppointmentData} = useAdminContext();
     if(clickedNavItem !== 'admin'){
         return null
     }
     const navigte = useNavigate();
-    const handleAppointmentCardClick = (id: string) => {
+    const handleAppointmentCardClick = (id: string, appointment: AppointmentDetails) => {
       navigte('/doctor/appointment');
       localStorage.setItem("appointment_id",id);
+      setAppointmentData(appointment);
     }
   return (
     <>
@@ -27,7 +31,7 @@ const Admin = () => {
                 <div className="grid grid-cols-2 gap-4">
                   {appointments.map((appointment) => (
                     <AppointmentCard 
-                      onClick={() => handleAppointmentCardClick(appointment.appointmentId)} 
+                      onClick={() => handleAppointmentCardClick(appointment.appointmentId, appointment)} 
                       appointmentId={appointment.appointmentId} 
                       patient_details={appointment.patient_details} 
                     />
