@@ -13,9 +13,9 @@ const Admin = () => {
         return null
     }
     const navigte = useNavigate();
-    const handleAppointmentCardClick = (id: number) => {
+    const handleAppointmentCardClick = (id: string) => {
       navigte('/doctor/appointment');
-      localStorage.setItem("appointment_id",id.toString());
+      localStorage.setItem("appointment_id",id);
     }
   return (
     <>
