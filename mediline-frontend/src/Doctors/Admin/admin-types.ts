@@ -39,8 +39,8 @@ export interface AppointmentDetails {
     appointment_date: string,
     time_slot: string,
     is_completed: boolean,
-    prescription:[],
-    reports:[]
+    prescription: any[],
+    reports: any[]
 }
 export interface patient_details {
     name: string,
