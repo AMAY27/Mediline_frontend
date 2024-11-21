@@ -15,9 +15,9 @@ const Admin = () => {
     const {setAppointmentData} = useAdminContext();
     const [appointmentCardClicked, setAppointmentCardClicked] = useState<boolean>(false);
     if(clickedNavItem !== 'admin'){
-        return null
+      return null
     }
-    const navigte = useNavigate();
+    // const navigte = useNavigate();
     const handleAppointmentCardClick = (id: string, appointment: AppointmentDetails) => {
       // navigte('/doctor/appointment');
       setAppointmentCardClicked(true);
