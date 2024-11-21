@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Components/Navbar/Navbar';
 import { useDocContext } from '../Global-contexts/DocContext';
 import Dochoc from '../Hoc/Dochoc';
@@ -8,40 +8,50 @@ import AppointmentBookingMain from './AdminComponents/AppointmentBooking/Appoint
 import { useNavigate } from 'react-router-dom';
 import { useAdminContext } from './Admin-context/AdminContext';
 import { AppointmentDetails } from './admin-types';
+import AppointmentSection from './AdminComponents/AppointmentSection/Appointment-section';
 
 const Admin = () => {
     const {clickedNavItem} = useDocContext();
     const {setAppointmentData} = useAdminContext();
+    const [appointmentCardClicked, setAppointmentCardClicked] = useState<boolean>(false);
     if(clickedNavItem !== 'admin'){
-        return null
+      return null
     }
-    const navigte = useNavigate();
+    // const navigte = useNavigate();
     const handleAppointmentCardClick = (id: string, appointment: AppointmentDetails) => {
-      navigte('/doctor/appointment');
+      // navigte('/doctor/appointment');
+      setAppointmentCardClicked(true);
       localStorage.setItem("appointment_id",id);
       setAppointmentData(appointment);
     }
+    const handleBackCLicked = () => {
+      setAppointmentCardClicked(false);
+    }
+
   return (
     <>
       <Navbar/>
       <>
-        <div className='grid grid-cols-4 gap-4'>
-            <div className="col-span-2 p-4">
-                <h2 className='text-2xl mb-4'>Today's Appointments</h2>
-                <div className="grid grid-cols-2 gap-4">
-                  {appointments.map((appointment) => (
-                    <AppointmentCard 
-                      onClick={() => handleAppointmentCardClick(appointment.appointmentId, appointment)} 
-                      appointmentId={appointment.appointmentId} 
-                      patient_details={appointment.patient_details} 
-                    />
-                  ))}
-                </div>
-            </div>
-            <div className="col-span-2 p-8">
-                <AppointmentBookingMain/>
-            </div>
-        </div>
+        {appointmentCardClicked ? 
+          <AppointmentSection handleBack={handleBackCLicked}/> :
+          <div className='grid grid-cols-4 gap-4'>
+              <div className="col-span-2 p-4">
+                  <h2 className='text-2xl mb-4'>Today's Appointments</h2>
+                  <div className="grid grid-cols-2 gap-4">
+                    {appointments.map((appointment) => (
+                      <AppointmentCard 
+                        onClick={() => handleAppointmentCardClick(appointment.appointmentId, appointment)} 
+                        appointmentId={appointment.appointmentId} 
+                        patient_details={appointment.patient_details} 
+                      />
+                    ))}
+                  </div>
+              </div>
+              <div className="col-span-2 p-8">
+                  <AppointmentBookingMain/>
+              </div>
+          </div>
+        }
       </>
     </>
   )
