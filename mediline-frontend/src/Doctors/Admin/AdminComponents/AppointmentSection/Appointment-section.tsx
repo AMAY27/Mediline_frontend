@@ -1,16 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Navbar from '../Components/Navbar/Navbar';
-import { useAdminContext } from '../Admin/Admin-context/AdminContext';
+// import Navbar from '../../../Components/Navbar';
+import { useAdminContext } from '../../Admin-context/AdminContext';
 
-const Appointment = () => {
+interface AppointmentSectionProps{
+    handleBack: () => void,
+}
+
+const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => {
     const navigte = useNavigate();
     const { appointmentData } = useAdminContext();
   return (
     <>
       {/* <Navbar/> */}
       <div className='flex items-center m-4 text-2xl'>
-        <div onClick={() => navigte('/doctor/admin')} className='cursor-pointer mx-5'>&lt;</div>
+        <div onClick={handleBack} className='cursor-pointer mx-5'>&lt;</div>
         <div>Appointment</div>
       </div>
       <div
@@ -35,4 +39,4 @@ const Appointment = () => {
   )
 }
 
-export default Appointment
+export default AppointmentSection
