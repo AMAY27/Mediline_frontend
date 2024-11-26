@@ -18,10 +18,10 @@ const BaseNav = () => {
         navigate(`/doctor/${item}`);
     }
   return (
-    <div className='flex flex-col items-center bg-green-800 pt-5 w-[7%] h-screen'>
-        <div className='bg-green-600 font-bold rounded-full px-2 text-[2rem] font-bold flex items-center mb-4'>
+    <div className='flex flex-col items-center bg-green-900 w-[7%] h-screen'>
+        {/* <div className='bg-green-600 font-bold rounded-full px-2 text-[2rem] font-bold flex items-center mb-4'>
             <h2 className='text-green-200'>M</h2>
-        </div>
+        </div> */}
         <div 
             onClick={() => handleNavItemsClick("admin")}
             className={`flex flex-col items-center text-center text-sm break-words w-full py-2 cursor-pointer text-white mb-4 hover:bg-green-600 ${clickedNavItem === "admin" ? 'bg-green-600' : 'bg-transparent'}`}

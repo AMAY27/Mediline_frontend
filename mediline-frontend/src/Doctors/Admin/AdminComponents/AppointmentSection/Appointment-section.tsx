@@ -83,6 +83,12 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
           </div>
         </div>
       </div>
+      {prescriptionType === "medication" && 
+        <div>Medication</div>
+      }
+      {prescriptionType === "diagnostics" && 
+        <div>Diagnostics</div>
+      }
     </>
   )
 }

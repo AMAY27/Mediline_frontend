@@ -36,7 +36,7 @@ const Admin = () => {
 
   return (
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
       <>
         {appointmentId ? ( 
           <AppointmentSection handleBack={handleBackCLicked}/> 

@@ -1,15 +1,19 @@
 import React from 'react'
 import BaseNav from '../Components/BaseNav/BaseNav'
+import Navbar from '../Components/Navbar/Navbar'
 
 const Dochoc = (WrappedComponets: React.FC<any>) => {
   return(props: any) => {
     return(
-      <div className='flex'>
-        <BaseNav/>
-        <div className='w-full'>
-          <WrappedComponets {...props}/>
+      <>
+        <Navbar/>
+        <div className='flex'>
+          <BaseNav/>
+          <div className='w-full'>
+            <WrappedComponets {...props}/>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 }

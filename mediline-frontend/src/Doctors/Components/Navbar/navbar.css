@@ -4,13 +4,15 @@
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
-    color: black;
+    color: white;
     height: fit-content;
     /* border-radius: 25px; */
     /* margin-top: 20px; */
     /* margin-inline: 20px; */
     padding-block: 10px;
     border-bottom: 2px solid #16A34A;
+    /* background-color: #065f46; */
+    justify-content: space-between;
     /* position :absolute; */
 
 }
@@ -21,7 +23,8 @@
 
 .nav-bar h2{
     font-weight: bolder;
-    color: #16A34A;
+    /* color: #16A34A; */
+    color: white;
     font-size: xx-large;
 }
 
@@ -82,10 +85,12 @@
 
 .nav-patient-input{
     border-radius: 0.5rem;
-    border: 2px solid #16A34A;
+    border: 2px solid white;
     padding-inline: 1.5rem;
     padding-block: 0.25rem;
-    width: 100%;
+    width: 50%;
+    color: white;
+    background-color: transparent;
     
 }
 

@@ -13,7 +13,7 @@ const PatientManager = () => {
     }
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
       <h2 className='text-green-600 text-3xl font-bold px-4 py-4'>Patient Manager</h2>
     </div>
   )
