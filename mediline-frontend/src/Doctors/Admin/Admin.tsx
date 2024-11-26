@@ -5,7 +5,7 @@ import Dochoc from '../Hoc/Dochoc';
 import {appointments} from '../../../testDataForDoctors/appointmentList';
 import AppointmentCard from './AdminComponents/AppointmentCard';
 import AppointmentBookingMain from './AdminComponents/AppointmentBooking/AppointmentBookingMain';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAdminContext } from './Admin-context/AdminContext';
 import { AppointmentDetails } from './admin-types';
 import AppointmentSection from './AdminComponents/AppointmentSection/Appointment-section';
@@ -14,26 +14,33 @@ const Admin = () => {
     const {clickedNavItem} = useDocContext();
     const {setAppointmentData} = useAdminContext();
     const [appointmentCardClicked, setAppointmentCardClicked] = useState<boolean>(false);
+    const { appointmentId } = useParams();
+
     if(clickedNavItem !== 'admin'){
       return null
     }
-    // const navigte = useNavigate();
+    const navigte = useNavigate();
     const handleAppointmentCardClick = (id: string, appointment: AppointmentDetails) => {
-      // navigte('/doctor/appointment');
-      setAppointmentCardClicked(true);
+      // setAppointmentCardClicked(true);
       localStorage.setItem("appointment_id",id);
       setAppointmentData(appointment);
+      navigte(`/doctor/admin/appointments/${id}`);
     }
     const handleBackCLicked = () => {
       setAppointmentCardClicked(false);
+    }
+
+    if (clickedNavItem !== 'admin') {
+      return null;
     }
 
   return (
     <>
       <Navbar/>
       <>
-        {appointmentCardClicked ? 
-          <AppointmentSection handleBack={handleBackCLicked}/> :
+        {appointmentId ? ( 
+          <AppointmentSection handleBack={handleBackCLicked}/> 
+        ) :
           <div className='grid grid-cols-4 gap-4'>
               <div className="col-span-2 p-4">
                   <h2 className='text-2xl mb-4'>Today's Appointments</h2>

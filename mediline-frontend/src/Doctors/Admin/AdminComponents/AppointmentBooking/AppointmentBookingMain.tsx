@@ -46,7 +46,8 @@ const AppointmentBookingMain = () => {
         setContactVerified(false);
     }
     return (
-        <div>
+        <div className='border-2 border-gray-300 px-4 py-2 h-full rounded-2xl'>
+            <h2 className=' flex justify-center text-2xl text-green-600 items-center'>Book New Appointment</h2>
             {!isContactVerificationComplete ? (
                 <ContactForm 
                     contactNumber={contactNumber} 

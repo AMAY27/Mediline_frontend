@@ -17,6 +17,7 @@ const DoctorRoutes = () => {
         <Routes>
           <Route path='login' element={<Login/>}/>
           <Route path='admin' element={<Admin/>}/>
+          <Route path='admin/appointments/:appointmentId' element={<Admin/>}/>
           <Route path='patients' element={<PatientManager/>}/>
           <Route path='appointment' element={<Appointment/>}/>
         </Routes>
