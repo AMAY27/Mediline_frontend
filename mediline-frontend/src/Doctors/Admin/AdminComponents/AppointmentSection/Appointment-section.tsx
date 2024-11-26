@@ -36,12 +36,12 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
   return (
     <>
       {/* <Navbar/> */}
-      <div className='flex items-center m-4 text-2xl'>
+      {/* <div className='flex items-center m-4 text-2xl'>
         <div onClick={handleBack} className='cursor-pointer mx-5'>&lt;</div>
         <div>Appointment</div>
-      </div>
+      </div> */}
       <div
-        className='bg-green-100 border-y-2 border-green-600 w-100 px-8 py-2'
+        className='shadow-full w-100 px-8 py-2'
       >
         <h2 className='text-xl font-bold text-green-600'>Patient Details</h2>
         {/* <div>{appointmentData.appointmentId}</div> */}
