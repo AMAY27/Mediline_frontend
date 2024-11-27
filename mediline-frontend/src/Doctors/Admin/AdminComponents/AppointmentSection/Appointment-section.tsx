@@ -40,55 +40,66 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
         <div onClick={handleBack} className='cursor-pointer mx-5'>&lt;</div>
         <div>Appointment</div>
       </div> */}
-      <div
-        className='shadow-full w-100 px-8 py-2'
-      >
-        <h2 className='text-xl font-bold text-green-600'>Patient Details</h2>
-        {/* <div>{appointmentData.appointmentId}</div> */}
-        {/* <div>{appointmentData.appointment_date}</div> */}
-        {/* <div>{appointmentData.user_id}</div> */}
-        <div className="flex justify-between items-center ">
-          <div className="flex space-x-8 m-2">
-            <div><span className='font-bold text-green-600'>Name:</span> {appointmentData.patient_details.name}</div>
-            <div><span className='font-bold text-green-600'>Age:</span> {appointmentData.patient_details.age}</div>
-            <div><span className='font-bold text-green-600'>Weight:</span> {appointmentData.patient_details.weight}</div>
-          </div>
-          <div className='relative' ref={miniDivRef}>
-            <button 
-                className='px-2 font-bold text-2xl rounded-md bg-green-600 shadow-full text-white'
-                onClick={handleShowMinidiv}
-            >
-                    +
-            </button>
-            {showMiniDiv && 
-                <div 
-                    className='absolute top-full right-0 border-2 border-green-600 rounded-xl bg-white z-10 w-auto shadow-full py-4 rounded-md'
+      <div className='flex'>
+        <div className='w-[50%] border-b-[2px] border-r-[2px] border-gray-200 h-screen'>
+          <div
+            className='border-b-[2px] border-gray-200 py-2 px-8'
+          >
+            <h2 className='text-2xl text-green-800'>{appointmentData.patient_details.name}</h2>
+            {/* <div>{appointmentData.appointmentId}</div> */}
+            {/* <div>{appointmentData.appointment_date}</div> */}
+            {/* <div>{appointmentData.user_id}</div> */}
+            <div className="flex justify-between items-center ">
+              <div className="flex space-x-8 my-2">
+                {/* <div><span className='font-bold text-green-600'>Name:</span> {appointmentData.patient_details.name}</div> */}
+                <div><span className='font-bold text-green-600'>Age:</span> {appointmentData.patient_details.age}</div>
+                <div><span className='font-bold text-green-600'>Weight:</span> {appointmentData.patient_details.weight}</div>
+              </div>
+              <div className='relative' ref={miniDivRef}>
+                <button 
+                    className='p-[6px] font-bold text-md rounded-md bg-green-600 shadow-full text-white'
+                    onClick={handleShowMinidiv}
                 >
-                    <ul>
-                        <li 
-                            className='cursor-pointer hover:bg-green-100 px-4 py-2'
-                            onClick={() => setPrescriptionType("medication")}
-                        >
-                                Medication
-                        </li>
-                        <li 
-                            className='cursor-pointer hover:bg-green-100 px-4 py-2'
-                            onClick={() => setPrescriptionType("diagnostics")}
-                        >
-                                Diagnostics
-                        </li>
-                    </ul>
-                </div>
-            }
+                        + Add
+                </button>
+                {showMiniDiv && 
+                    <div 
+                        className='absolute top-full right-0 border-2 border-gray-200 rounded-xl bg-white z-10 w-auto shadow-full py-4 rounded-md my-1'
+                    >
+                        <ul>
+                            <li 
+                                className='cursor-pointer hover:bg-green-100 px-4 py-2'
+                                onClick={() => setPrescriptionType("medication")}
+                            >
+                                    Medication
+                            </li>
+                            <li 
+                                className='cursor-pointer hover:bg-green-100 px-4 py-2'
+                                onClick={() => setPrescriptionType("diagnostics")}
+                            >
+                                    Diagnostics
+                            </li>
+                        </ul>
+                    </div>
+                }
+              </div>
+            </div>
           </div>
+          {prescriptionType === "medication" && 
+            <div className='bg-gray-100 p-2 flex justify-between'>
+              <h2>Medication</h2>
+              <h2 className='cursor-pointer' onClick={() => setPrescriptionType("")}>x</h2>
+            </div>
+          }
+          {prescriptionType === "diagnostics" && 
+            <div className='bg-gray-100 p-2 flex justify-between'>
+              <h2>Diagnostics</h2>
+              <h2 className='cursor-pointer' onClick={() => setPrescriptionType("")}>x</h2>
+            </div>
+          }
         </div>
+        
       </div>
-      {prescriptionType === "medication" && 
-        <div>Medication</div>
-      }
-      {prescriptionType === "diagnostics" && 
-        <div>Diagnostics</div>
-      }
     </>
   )
 }
