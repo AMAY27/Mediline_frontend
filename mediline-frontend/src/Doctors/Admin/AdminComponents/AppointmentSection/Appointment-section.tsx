@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 // import Navbar from '../../../Components/Navbar';
 import { useAdminContext } from '../../Admin-context/AdminContext';
 import { IoMdArrowDropdown, IoMdCheckmark } from "react-icons/io";
+import { LiaGripLinesVerticalSolid } from "react-icons/lia";
+
 
 
 interface AppointmentSectionProps{
@@ -108,10 +110,10 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
 
   return (
     <>
-      <div className='flex gap-4'>
-        <div className='w-[50%] border-b-[2px] border-gray-200 h-screen'>
+      <div className='flex gap-4 h-svh'>
+        <div className='w-[50%] border-b-[2px] border-gray-200 h-full'>
           <div
-            className='border-gray-200 py-2 px-8'
+            className='border-gray-200 py-2 px-6'
           >
             <h2 className='text-2xl text-green-800'>{appointmentData.patient_details.name}</h2>
             <div className="flex justify-between items-center ">
@@ -149,7 +151,7 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
               </div>
             </div>
           </div>
-          <div className='bg-gray-100 rounded-xl ml-2 px-4 py-4'>
+          <div className='bg-gray-100 rounded-xl ml-2 px-6 py-4'>
             {/* <div className='flex justify-end text-green-800 text-lg'>
               <h2 className='cursor-pointer' onClick={() => setPrescriptionType("")}>X</h2>
             </div> */}
@@ -171,7 +173,10 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
             </div>
           </div>
           <div className='flex'>
-            <div className='w-[50%]'>
+            <div className='w-[50%] py-2'>
+              <h2 className='text-lg text-green-800 flex justify-center'>
+                Medication
+              </h2>
               {medicationList.map((medication, index) => (
                 <div 
                   className='flex justify-between items-center border-2 border-gray-200 p-2 m-2 rounded-lg'
@@ -189,7 +194,10 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
                 </div>
               ))}
             </div>
-            <div className='w-[50%]'>
+            <div className='w-[50%] py-2'>
+              <h2 className='text-lg text-green-800 flex justify-center'>
+                Diagnostics
+              </h2>
               {testList.map((test, index) => (
                 <div 
                   className='flex justify-between items-center border-2 border-gray-200 p-2 m-2 rounded-lg'
@@ -209,9 +217,14 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
             </div>
           </div>
         </div>
-        <div className='w-[50%] border-b-[2px] border-l-[2px] border-gray-200 h-screen'>
-          <div className='w-100 py-4 px-2 bg-gray-100'>
-            <h2>Medical History</h2>
+        <div className='w-[50%] border-b-[2px] border-l-[2px] border-gray-200 h-full flex'>
+          <div className='h-100 flex items-center w-[2%]'>
+            <LiaGripLinesVerticalSolid className='text-xl'/>
+          </div>
+          <div className='h-full w-[98%]'>
+            <div className=' p-4 text-lg text-green-800 border-b-[2px] border-gray-200'>
+              <h2>Medical History</h2>
+            </div>
           </div>
         </div>
       </div>
