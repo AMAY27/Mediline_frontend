@@ -25,15 +25,68 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
     const [prescriptionType, setPrescriptionType] = useState<string>("medication");
     const [showMiniDiv, setShowMiniDiv] = useState(false);
     const miniDivRef = useRef<HTMLDivElement | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
     const [medicationList, setMedicationList] = useState<medication[]>([]);
     const [testList, setTestList] = useState<test[]>([]);
+    const [resizeWidthForDetailSection, setResizeWidthForDetailSection] = useState(50); // In percentages
+    const [isResizing, setIsResizing] = useState(false);
+
     const [medicationInput, setMedicationInput] = useState<medication>({
       name:"",
     });
     const [testInput, setTestInput] = useState<test>({
       name:""
-    })
+    });
 
+    const handleMouseDown = () => {
+      setIsResizing(true);
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      if (isResizing) {
+        const container = document.querySelector('.container') as HTMLElement;
+        if (!container) {
+          console.error("Container not found");
+          return;
+        }
+  
+        const containerWidth = container.offsetWidth;
+        const mouseX = event.clientX; // Mouse position relative to viewport
+        const containerLeft = container.getBoundingClientRect().left; // Container's left position
+  
+        // Calculate new widths
+        const newWidth = ((mouseX - containerLeft) / containerWidth) * 100;
+        const clampedWidth = Math.min(Math.max(newWidth, 10), 90); // Restrict between 10% and 90%
+  
+        setResizeWidthForDetailSection(clampedWidth);
+        console.log({
+          mouseX,
+          containerLeft,
+          newWidth,
+          clampedWidth,
+          isResizing,
+        });
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+  
+    useEffect(() => {
+      if (isResizing) {
+        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mouseup', handleMouseUp);
+      } else {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      }
+  
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }, [isResizing]);
 
     const handleShowMinidiv = () => {
         setShowMiniDiv(!showMiniDiv);
@@ -110,8 +163,11 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
 
   return (
     <>
-      <div className='flex gap-4 h-svh'>
-        <div className='w-[50%] border-b-[2px] border-gray-200 h-full'>
+      <div className='container flex gap-4 h-svh'>
+        <div 
+          className={`border-b-[2px] border-gray-200 h-full`}
+          style={{ width: `${resizeWidthForDetailSection}%` }}
+        >
           <div
             className='border-gray-200 py-2 px-6'
           >
@@ -217,8 +273,13 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
             </div>
           </div>
         </div>
-        <div className='w-[50%] border-b-[2px] border-l-[2px] border-gray-200 h-full flex'>
-          <div className='h-100 flex items-center w-[2%]'>
+        <div className={`border-b-[2px] border-l-[2px] border-gray-200 h-full flex`}
+          style={{ width: `${100-resizeWidthForDetailSection}%` }}
+        >
+          <div 
+            className='h-100 flex items-center w-[20px] cursor-col-resize'
+            onMouseDown={handleMouseDown}
+          >
             <LiaGripLinesVerticalSolid className='text-xl'/>
           </div>
           <div className='h-full w-[98%]'>
