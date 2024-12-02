@@ -1,7 +1,9 @@
+// Patient manager branch setup for development
 import React, { useEffect } from 'react';
 import Dochoc from '../Hoc/Dochoc';
 import { useDocContext } from '../Global-contexts/DocContext';
 import Navbar from '../Components/Navbar/Navbar';
+
 
 const PatientManager = () => {
     const { clickedNavItem, setClickedNavItem } = useDocContext();
