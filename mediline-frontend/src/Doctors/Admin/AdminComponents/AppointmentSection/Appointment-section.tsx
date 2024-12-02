@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAdminContext } from '../../Admin-context/AdminContext';
 import { IoMdArrowDropdown, IoMdCheckmark } from "react-icons/io";
 import { LiaGripLinesVerticalSolid } from "react-icons/lia";
+import { FaPrint } from "react-icons/fa";
 
 
 
@@ -59,13 +60,6 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
         const clampedWidth = Math.min(Math.max(newWidth, 10), 90); // Restrict between 10% and 90%
   
         setResizeWidthForDetailSection(clampedWidth);
-        console.log({
-          mouseX,
-          containerLeft,
-          newWidth,
-          clampedWidth,
-          isResizing,
-        });
       }
     };
 
@@ -212,23 +206,26 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
               <h2 className='cursor-pointer' onClick={() => setPrescriptionType("")}>X</h2>
             </div> */}
             <h2 className='text-green-800 text-lg mb-2'>{prescriptionType === "medication" ? "Medication" : "Diagnostics"}</h2>
-            <div className="flex space-x-2 items-center">
-              <input
-                className='rounded-md p-[4px] px-2 w-full bg-white border-2 border-gray-300'
-                placeholder={prescriptionType === "medication" ? 'Enter or search for medication' : 'Enter or search for diagnostics'}
-                name='name'
-                onChange={(e) => handleChange(e, prescriptionType)}
-                value={prescriptionType === "medication" ? medicationInput.name : testInput.name}
-              />
-              <button 
-                className='py-[4px] px-2 font-bold text-md rounded-md bg-green-600 shadow-full text-white'
-                onClick={prescriptionType === "medication" ? handleAddMedication : handleAddTest}
-              >
-                Add
-              </button>
+            <div className="">
+              <form onSubmit={prescriptionType === "medication" ? handleAddMedication : handleAddTest} className='flex space-x-2 items-center w-full'>
+                <input
+                  className='rounded-md p-[4px] px-2 w-full bg-white border-2 border-gray-300'
+                  placeholder={prescriptionType === "medication" ? 'Enter or search for medication' : 'Enter or search for diagnostics'}
+                  name='name'
+                  onChange={(e) => handleChange(e, prescriptionType)}
+                  value={prescriptionType === "medication" ? medicationInput.name : testInput.name}
+                  required={true}
+                />
+                <button 
+                  className='py-[4px] px-2 font-bold text-md rounded-md bg-green-600 shadow-full text-white'
+                  type='submit'
+                >
+                  Add
+                </button>
+              </form>
             </div>
           </div>
-          <div className='flex'>
+          <div className='flex border-b-2 border-gray-200'>
             <div className='w-[50%] py-2'>
               <h2 className='text-lg text-green-800 flex justify-center'>
                 Medication
@@ -271,6 +268,18 @@ const AppointmentSection: React.FC<AppointmentSectionProps> = ({handleBack}) => 
                 </div>
               ))}
             </div>
+          </div>
+          <div className='flex justify-end space-x-4 mt-4'>
+            <button 
+              className='py-[4px] px-2 bg-gray-100 hover:bg-green-600 hover:text-white rounded-md hover:font-bold flex items-center'
+            >
+              <span className='mx-1'><FaPrint/></span> print
+            </button>
+            <button 
+              className='py-[4px] px-2 border-2 border-green-600 hover:bg-green-600 hover:text-white rounded-md hover:font-bold'
+            >
+              Submit
+            </button>
           </div>
         </div>
         <div className={`border-b-[2px] border-l-[2px] border-gray-200 h-full flex`}
