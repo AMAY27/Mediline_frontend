@@ -14,9 +14,18 @@ const PatientManager = () => {
         return null;
     }
   return (
-    <div>
+    <div className='flex'>
+      <div className='flex justify-center w-[25%] p-8'>
+        <form action="" className='border-2 border-green-600 rounded-md p-4 space-y-2 w-full shadow-md'>
+          <label className='text-green-600 text-lg'>Enter Patient Name:</label>
+          <input
+            className='px-2 py-1  border-2 border-gray-200 rounded-xl w-full'
+            placeholder=''
+          />
+        </form>
+      </div>
       {/* <Navbar/> */}
-      <h2 className='text-green-600 text-3xl font-bold px-4 py-4'>Patient Manager</h2>
+      {/* <h2 className='text-green-600 text-3xl font-bold px-4 py-4'>Patient Manager</h2> */}
     </div>
   )
 }
