@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import { InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 
 const BACKEND_URL = import.meta.env.VITE_NODE_BACKEND_URL;
 
@@ -11,7 +12,7 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use((config:InternalAxiosRequestConfig) => {
   const token = localStorage.getItem("authToken");
   if (token) {
     config.headers.Authorization = token;
@@ -20,7 +21,7 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-  (response) => response,
+  (response: AxiosResponse) => response,
   (error: AxiosError) => {
     if (error.response?.status === 401) {
       redirectCallback && redirectCallback();
